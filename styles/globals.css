@@ -201,7 +201,8 @@ a {
   border: 1px solid rgba(132, 4, 255, 0.16);
   background: linear-gradient(155deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.58));
   padding: clamp(0.85rem, 2vw, 1.25rem);
-  overflow: hidden;
+  /* allow visuals to overflow slightly so tall portrait screenshots aren't clipped */
+  overflow: visible;
   animation: showcaseIn 650ms ease;
 }
 
@@ -243,6 +244,11 @@ a {
   padding: 0.9rem;
 }
 
+/* allow children to shrink to avoid overflow on narrow screens */
+.slide-card > * {
+  min-width: 0;
+}
+
 .slide-next {
   animation: slideInNext 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -254,19 +260,24 @@ a {
 .slide-visual {
   width: 100%;
   max-width: 320px;
-  aspect-ratio: 9 / 19.5;
   border-radius: 16px;
   overflow: hidden;
   border: 0;
   background: rgba(255, 255, 255, 0.75);
   justify-self: center;
+  display: flex;
+  align-items: flex-start; /* anchor image to top so it doesn't get cropped vertically */
+  justify-content: center;
+  padding-top: 0.5rem;
 }
 
-.slide-card img {
+.slide-visual img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  /* allow tall portrait screenshots to scale within viewport without cropping */
+  max-height: min(72vh, 760px);
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .slide-copy {
@@ -598,6 +609,41 @@ a {
 
   .benefits-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Mobile override: allow showcase to show overflowing visuals (prevent cropping) */
+  .showcase {
+    overflow: visible;
+    padding-bottom: 1rem;
+  }
+
+  /* Stack slide content and ensure it can shrink */
+  .slide-card {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .slide-card > * {
+    min-width: 0;
+  }
+
+  /* Allow the visual to scale within viewport height without cropping */
+  .slide-visual img {
+    max-height: 72vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* If device is extremely narrow, reduce corner radius and inner padding to gain space */
+  @media (max-width: 360px) {
+    .slide-card {
+      border-radius: 14px;
+      padding: 0.6rem;
+    }
+    .slide-visual {
+      border-radius: 12px;
+    }
   }
 }
 

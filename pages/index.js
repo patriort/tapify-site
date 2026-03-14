@@ -12,17 +12,17 @@ const slides = [
   },
   {
     eyebrow: 'Paso 2',
-    title: 'Visualizá tu semana de forma clara',
+    title: 'Visualizá tus fijos de forma clara',
     description:
-      'Cada gasto queda ordenado por categoría y fecha para que no tengas que buscar ni pensar de más.',
+      'Cada gasto fijo queda ordenado por registrado por fecha para que no tengas que buscar ni pensar de más.',
     image: '/assets/IMG_0302-portrait.png',
-    alt: 'Lista de gastos en Tapify'
+    alt: 'Lista de fijos en Tapify'
   },
   {
     eyebrow: 'Paso 3',
     title: 'Decidí mejor rápido',
     description:
-      'Mirás un resumen visual y sabés en qué se va tu plata. Sin planillas, sin menús largos.',
+      'Mirá el calendario y elegí que día o mes queres visualizar. Sin planillas, sin menús largos.',
     image: '/assets/IMG_0303-portrait.png',
     alt: 'Resumen de gastos en Tapify'
   }
@@ -187,7 +187,7 @@ export default function Home() {
 
             <div className="hero-metrics">
               <div>
-                <strong>&lt; 5s</strong>
+                <strong>1 toque</strong>
                 <span>para registrar</span>
               </div>
               <div>
@@ -203,12 +203,21 @@ export default function Home() {
         </section>
 
         <section className="section reveal-up" id="como-funciona" data-reveal>
+          <section className="section reveal-up step-four" data-reveal>
           <div className="section-head">
-            <h2>Una interfaz que respira</h2>
-            <p>Deslizá y mirá cómo Tapify te lleva de registrar a decidir rápido.</p>
+            <h2>Widgets en lockscreen</h2>
+            <p>Visualizá tu restante y agregá un gasto rápido con un solo toque.</p>
           </div>
+          
 
+          <article className="step-four-card">
+            <div className="step-four-visual widgets-crop">
+              <img src="/assets/IMG_0306-portrait.png" alt="Widgets en lockscreen de Tapify" />
+            </div>
+          </article>
+        </section>
           <div
+          
             ref={showcaseRef}
             className={isPaused ? 'showcase paused' : 'showcase'}
             onMouseEnter={() => setIsPaused(true)}
@@ -314,20 +323,6 @@ export default function Home() {
             </div>
           </article>
         </section>
-
-        <section className="section reveal-up step-four" data-reveal>
-          <div className="section-head">
-            <h2>Widgets en lockscreen</h2>
-            <p>Visualizá tu restante y agregá un gasto rápido desde la pantalla bloqueada.</p>
-          </div>
-
-          <article className="step-four-card">
-            <div className="step-four-visual widgets-crop">
-              <img src="/assets/IMG_0306-portrait.png" alt="Widgets en lockscreen de Tapify" />
-            </div>
-          </article>
-        </section>
-
       </main>
 
       <footer className="site-footer">
