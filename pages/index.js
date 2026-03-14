@@ -8,21 +8,21 @@ const slides = [
     description:
       'Escribí el gasto de forma rápida: "STM" y  "570". Tapify completa y guarda al instante.',
     image: '/assets/IMG_0301-portrait.png',
-    alt: 'Registro rapido en Tapify'
+    alt: 'Registro rápido en Tapify'
   },
   {
     eyebrow: 'Paso 2',
     title: 'Visualizá tu semana de forma clara',
     description:
-      'Cada gasto queda ordenado por categoria y fecha para que no tengas que buscar ni pensar de más.',
+      'Cada gasto queda ordenado por categoría y fecha para que no tengas que buscar ni pensar de más.',
     image: '/assets/IMG_0302-portrait.png',
     alt: 'Lista de gastos en Tapify'
   },
   {
     eyebrow: 'Paso 3',
-    title: 'Decidí mejor rapido',
+    title: 'Decidí mejor rápido',
     description:
-      'Mirás un resumen visual y sabes en que se va tu plata. Sin planillas, sin menus largos.',
+      'Mirás un resumen visual y sabés en qué se va tu plata. Sin planillas, sin menús largos.',
     image: '/assets/IMG_0303-portrait.png',
     alt: 'Resumen de gastos en Tapify'
   }
@@ -30,13 +30,16 @@ const slides = [
 
 export default function Home() {
   const AUTO_ADVANCE_MS = 3800
+  const TRANSITION_LOCK_MS = 360
   const [activeSlide, setActiveSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [slideDirection, setSlideDirection] = useState('next')
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const [isShowcaseInView, setIsShowcaseInView] = useState(false)
   const [isPageVisible, setIsPageVisible] = useState(true)
   const showcaseRef = useRef(null)
   const resumeTimerRef = useRef(null)
+  const transitionTimerRef = useRef(null)
 
   const pauseAndResume = (delay = 6000) => {
     setIsPaused(true)
@@ -48,24 +51,30 @@ export default function Home() {
     }, delay)
   }
 
-  const nextSlide = () => {
-    setSlideDirection('next')
-    setActiveSlide((current) => (current + 1) % slides.length)
-  }
+  const goToSlide = (nextIndex, direction) => {
+    if (isTransitioning) {
+      return
+    }
+    setIsTransitioning(true)
+    setSlideDirection(direction)
+    setActiveSlide(nextIndex)
 
-  const prevSlide = () => {
-    setSlideDirection('prev')
-    setActiveSlide((current) => (current - 1 + slides.length) % slides.length)
+    if (transitionTimerRef.current) {
+      clearTimeout(transitionTimerRef.current)
+    }
+    transitionTimerRef.current = setTimeout(() => {
+      setIsTransitioning(false)
+    }, TRANSITION_LOCK_MS)
   }
 
   const handleNext = () => {
     pauseAndResume()
-    nextSlide()
+    goToSlide((activeSlide + 1) % slides.length, 'next')
   }
 
   const handlePrev = () => {
     pauseAndResume()
-    prevSlide()
+    goToSlide((activeSlide - 1 + slides.length) % slides.length, 'prev')
   }
 
   useEffect(() => {
@@ -74,6 +83,9 @@ export default function Home() {
     }
 
     const autoplayTimer = setTimeout(() => {
+      if (isTransitioning) {
+        return
+      }
       setSlideDirection('next')
       setActiveSlide((current) => (current + 1) % slides.length)
     }, AUTO_ADVANCE_MS)
@@ -81,7 +93,7 @@ export default function Home() {
     return () => {
       clearTimeout(autoplayTimer)
     }
-  }, [isPaused, isShowcaseInView, isPageVisible, activeSlide, AUTO_ADVANCE_MS])
+  }, [isPaused, isShowcaseInView, isPageVisible, activeSlide, AUTO_ADVANCE_MS, isTransitioning])
 
   useEffect(() => {
     const currentShowcase = showcaseRef.current
@@ -135,6 +147,9 @@ export default function Home() {
       if (resumeTimerRef.current) {
         clearTimeout(resumeTimerRef.current)
       }
+      if (transitionTimerRef.current) {
+        clearTimeout(transitionTimerRef.current)
+      }
     }
   }, [])
 
@@ -144,8 +159,11 @@ export default function Home() {
         <title>Tapify | Tus gastos, bajo control y sin vueltas</title>
         <meta
           name="description"
-          content="Anota gastos en segundos y mira en que se te va la plata con una app simple y rapida."
+          content="Anotá gastos en segundos y mirá en qué se te va la plata con una app simple y rápida."
         />
+        {slides.map((slide) => (
+          <link key={slide.image} rel="preload" as="image" href={slide.image} />
+        ))}
       </Head>
 
       <header className="site-nav">
@@ -154,7 +172,7 @@ export default function Home() {
           <span>Tapify</span>
         </a>
 
-        <nav className="site-links" aria-label="Navegacion principal">
+        <nav className="site-links" aria-label="Navegación principal">
           <a href="#como-funciona">Producto</a>
           <a href="#beneficios">Ventajas</a>
         </nav>
@@ -162,10 +180,10 @@ export default function Home() {
 
       <main className="page-content" id="inicio">
         <section className="hero reveal-up is-visible" data-reveal>
-          <p className="launch-note">Proximamente en App Store</p>
+          <p className="launch-note">Próximamente en App Store</p>
           <div className="hero-copy">
             <h1>Minimalista por fuera. Potente por dentro.</h1>
-            <p>Anota gastos en segundos y entende tu semana sin menues largos ni pantallas de sobra.</p>
+            <p>Anotá gastos en segundos y entendé tu semana sin menús largos ni pantallas de sobra.</p>
 
             <div className="hero-metrics">
               <div>
@@ -174,7 +192,7 @@ export default function Home() {
               </div>
               <div>
                 <strong>Flujo limpio</strong>
-                <span>sin friccion</span>
+                <span>sin fricción</span>
               </div>
               <div>
                 <strong>Vista clara</strong>
@@ -187,7 +205,7 @@ export default function Home() {
         <section className="section reveal-up" id="como-funciona" data-reveal>
           <div className="section-head">
             <h2>Una interfaz que respira</h2>
-            <p>Desliza y mira como Tapify te lleva de registrar a decidir rapido.</p>
+            <p>Deslizá y mirá cómo Tapify te lleva de registrar a decidir rápido.</p>
           </div>
 
           <div
@@ -204,17 +222,23 @@ export default function Home() {
             <div className="glow glow-a" />
             <div className="glow glow-b" />
 
-            <button className="slide-arrow left" onClick={handlePrev} aria-label="Slide anterior" type="button">
+            <button
+              className="slide-arrow left"
+              onClick={handlePrev}
+              aria-label="Slide anterior"
+              type="button"
+              disabled={isTransitioning}
+            >
               <span>◀</span>
             </button>
 
             <article
               className={slideDirection === 'prev' ? 'slide-card slide-prev' : 'slide-card slide-next'}
               aria-live="polite"
-              key={`${slides[activeSlide].title}-${slideDirection}`}
+              key={slides[activeSlide].title}
             >
               <div className="slide-visual">
-                <img src={slides[activeSlide].image} alt={slides[activeSlide].alt} />
+                <img src={slides[activeSlide].image} alt={slides[activeSlide].alt} loading="eager" />
               </div>
               <div className="slide-copy">
                 <span>{slides[activeSlide].eyebrow}</span>
@@ -223,12 +247,18 @@ export default function Home() {
               </div>
             </article>
 
-            <button className="slide-arrow right" onClick={handleNext} aria-label="Slide siguiente" type="button">
+            <button
+              className="slide-arrow right"
+              onClick={handleNext}
+              aria-label="Slide siguiente"
+              type="button"
+              disabled={isTransitioning}
+            >
               <span>▶</span>
             </button>
           </div>
 
-          <div className="dots" role="tablist" aria-label="Seleccion de slides">
+          <div className="dots" role="tablist" aria-label="Selección de slides">
             {slides.map((slide, index) => (
               <button
                 key={slide.title}
@@ -238,10 +268,13 @@ export default function Home() {
                 aria-label={`Ir a ${slide.title}`}
                 className={activeSlide === index ? 'dot active' : 'dot'}
                 onClick={() => {
+                  if (index === activeSlide) {
+                    return
+                  }
                   pauseAndResume()
-                  setSlideDirection(index > activeSlide ? 'next' : 'prev')
-                  setActiveSlide(index)
+                  goToSlide(index, index > activeSlide ? 'next' : 'prev')
                 }}
+                disabled={isTransitioning}
               />
             ))}
           </div>
@@ -256,15 +289,15 @@ export default function Home() {
           <div className="benefits-grid">
             <article className="reveal-up" data-reveal style={{ '--delay': '80ms' }}>
               <h3>Hablas como siempre</h3>
-              <p>Escribes monto y concepto en una sola linea, sin pasos extra.</p>
+              <p>Escribís monto y concepto en una sola línea, sin pasos extra.</p>
             </article>
             <article className="reveal-up" data-reveal style={{ '--delay': '160ms' }}>
               <h3>Orden sin esfuerzo</h3>
-              <p>Todo queda acomodado por fecha y categoria, automaticamente.</p>
+              <p>Todo queda acomodado por fecha y categoría, automáticamente.</p>
             </article>
             <article className="reveal-up" data-reveal style={{ '--delay': '240ms' }}>
-              <h3>Panorama rapido</h3>
-              <p>En un vistazo sabes en que se te va la plata y ajustas a tiempo.</p>
+              <h3>Panorama rápido</h3>
+              <p>En un vistazo sabés en qué se te va la plata y ajustás a tiempo.</p>
             </article>
           </div>
         </section>
@@ -285,7 +318,7 @@ export default function Home() {
         <section className="section reveal-up step-four" data-reveal>
           <div className="section-head">
             <h2>Widgets en lockscreen</h2>
-            <p>Visualiza tu restante y agrega un gasto rapido desde la pantalla bloqueada.</p>
+            <p>Visualizá tu restante y agregá un gasto rápido desde la pantalla bloqueada.</p>
           </div>
 
           <article className="step-four-card">
