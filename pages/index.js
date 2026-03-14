@@ -151,6 +151,7 @@ export default function Home() {
       <header className="site-nav">
         <a className="brand" href="#inicio" aria-label="Tapify inicio">
           <img src="/assets/logo.png" alt="Tapify" />
+          <span>Tapify</span>
         </a>
 
         <nav className="site-links" aria-label="Navegacion principal">
@@ -270,20 +271,13 @@ export default function Home() {
 
         <section className="section reveal-up step-four" data-reveal>
           <div className="section-head">
-            <h2>Ajustes y control</h2>
-            <p>Un bloque separado para configurar Tapify a tu medida.</p>
+            <h2>Estadísticas y tendencias</h2>
+            <p>Un bloque separado para visualizar gráficas y reportes semanales.</p>
           </div>
 
           <article className="step-four-card">
             <div className="step-four-visual">
-              <img src="/assets/IMG_0304-portrait.png" alt="Ajustes de Tapify" />
-            </div>
-            <div className="step-four-copy">
-              <h3>Configura una vez y sigue</h3>
-              <p>
-                Aqui defines categorias, preferencias y privacidad para dejar la app a tu medida. Lo haces una vez y
-                despues todo el flujo diario sigue siendo rapido.
-              </p>
+              <img src="/assets/IMG_0304-portrait.png" alt="Estadísticas de Tapify" />
             </div>
           </article>
         </section>
@@ -297,13 +291,6 @@ export default function Home() {
           <article className="step-four-card">
             <div className="step-four-visual widgets-crop">
               <img src="/assets/IMG_0306-portrait.png" alt="Widgets en lockscreen de Tapify" />
-            </div>
-            <div className="step-four-copy">
-              <h3>Dos acciones clave, sin abrir la app</h3>
-              <ul className="slide-points">
-                <li>Widget de restante para ver cuanto te queda disponible.</li>
-                <li>Widget de carga rapida para agregar un gasto en un solo toque.</li>
-              </ul>
             </div>
           </article>
         </section>
