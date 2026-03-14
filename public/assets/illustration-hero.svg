@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="420" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="600" height="420" rx="20" fill="#FFFFFF"/>
+  <rect x="28" y="32" width="244" height="180" rx="12" fill="#F6F5FF"/>
+  <rect x="328" y="32" width="244" height="260" rx="12" fill="#F0FFF7"/>
+  <circle cx="150" cy="120" r="28" fill="#8404FF" opacity="0.95"/>
+  <rect x="340" y="56" width="192" height="12" rx="6" fill="#B141FF"/>
+  <rect x="340" y="80" width="120" height="10" rx="5" fill="#70DDB3"/>
+  <rect x="56" y="140" width="160" height="10" rx="5" fill="#EAE8FF"/>
+  <rect x="56" y="162" width="112" height="10" rx="5" fill="#EAE8FF"/>
+  <rect x="340" y="110" width="192" height="12" rx="6" fill="#E6FFF3"/>
+  <g opacity="0.08">
+    <rect x="12" y="220" width="576" height="160" rx="12" fill="#000"/>
+  </g>
+  <text x="44" y="260" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#071126" font-weight="700">Tapify — rápido, minimal</text>
+  <text x="44" y="286" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#6b7280">Registra gastos al instante y mantén tu control</text>
+</svg>
