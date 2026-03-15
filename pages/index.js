@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 const slides = [
   {
     eyebrow: 'Paso 1',
-    title: 'Anota en 3 segundos',
+    title: 'Anotá en 3 segundos',
     description:
       'Escribí el gasto de forma rápida: "STM" y  "570". Tapify completa y guarda al instante.',
     image: '/assets/IMG_0301-portrait.png',
@@ -175,6 +175,9 @@ export default function Home() {
         <nav className="site-links" aria-label="Navegación principal">
           <a href="#como-funciona">Producto</a>
           <a href="#beneficios">Ventajas</a>
+          <a href="#dispositivos">Dispositivos</a>
+          <a href="#planes">Planes</a>
+          <a href="#contacto">Contacto</a>
         </nav>
       </header>
 
@@ -297,8 +300,8 @@ export default function Home() {
 
           <div className="benefits-grid">
             <article className="reveal-up" data-reveal style={{ '--delay': '80ms' }}>
-              <h3>Hablas como siempre</h3>
-              <p>Escribís monto y concepto en una sola línea, sin pasos extra.</p>
+              <h3>Rápido</h3>
+              <p>Escribís monto y concepto, sin pasos extra.</p>
             </article>
             <article className="reveal-up" data-reveal style={{ '--delay': '160ms' }}>
               <h3>Orden sin esfuerzo</h3>
@@ -309,6 +312,7 @@ export default function Home() {
               <p>En un vistazo sabés en qué se te va la plata y ajustás a tiempo.</p>
             </article>
           </div>
+          
         </section>
 
         <section className="section reveal-up step-four" data-reveal>
@@ -322,7 +326,41 @@ export default function Home() {
               <img src="/assets/IMG_0304-portrait.png" alt="Estadísticas de Tapify" />
             </div>
           </article>
+                  <div className="wallet-card" style={{marginTop:15}}>
+            <div className="wallet-row">
+              <img src="/assets/Wallet_App_icon_iOS_12.png" alt="Wallet icon" className="wallet-icon" />
+              <div className="wallet-text">
+                <strong>Integración con Wallet</strong>
+                <p className="muted" style={{margin:4}}>Tapify se conecta con Wallet para que cualquier compra que realices se guarde automáticamente en la app.</p>
+              </div>
+            </div>
+          </div>
         </section>
+
+        <section id="dispositivos" className="section sync-section reveal-up" data-reveal>
+          <div className="sync-head">
+            <h2>Sincronización entre dispositivos</h2>
+            <p>Tapify se sincroniza automáticamente mediante iCloud para que tus gastos estén disponibles en iPhone y iPad.</p>
+                        <p>Proximamente también disponible en Mac.</p>
+
+          </div>
+
+          <div className="sync-row">
+            <div className="sync-row">
+              <div style={{flex:'1 1 56%',display:'flex',justifyContent:'center'}}>
+                  <div className="sync-visual mock-side">
+                    <div className="mock-portrait-side">
+                      <img src="/assets/Captura de pantalla 2026-03-14 a la(s) 20.59.23-portrait.png" alt="Sync portrait" />
+                    </div>
+                    <div className="mock-landscape-side">
+                      <img src="/assets/Captura de pantalla 2026-03-14 a la(s) 20.59.33-landscape.png" alt="Sync landscape" />
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <footer className="site-footer">
