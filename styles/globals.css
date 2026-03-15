@@ -25,6 +25,11 @@ body,
   min-height: 100%;
 }
 
+/* prevent accidental horizontal scroll from overflowing visuals */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Smooth scrolling for in-page links */
 html {
   scroll-behavior: smooth;
@@ -54,6 +59,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 0.35rem 0.2rem 0.9rem;
   animation: floatIn 500ms ease;
@@ -79,6 +85,9 @@ a {
   display: flex;
   gap: 0.35rem;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  min-width: 0;
 }
 
 .site-links a {
@@ -729,6 +738,21 @@ a {
 }
 
 @media (max-width: 940px) {
+  .site-nav {
+    align-items: flex-start;
+  }
+
+  .site-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.15rem;
+  }
+
+  .site-links a {
+    padding: 0.35rem 0.42rem;
+    font-size: 0.98rem;
+  }
+
   .slide-card {
     grid-template-columns: 1fr;
   }
@@ -746,10 +770,12 @@ a {
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 400px) {
   .page-shell {
-    width: min(var(--max-width), calc(100% - 1rem));
+    width: 100%;
+    padding: 0 1rem;
     margin-top: 0.7rem;
+    box-sizing: border-box;
   }
 
   .site-nav {
