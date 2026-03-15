@@ -849,9 +849,9 @@ a {
   }
 
   .slide-arrow {
-    top: auto;
-    bottom: 0.45rem;
-    transform: none;
+    top: min(42vw, 12rem);
+    bottom: auto;
+    transform: translateY(-50%);
   }
 
   .slide-arrow.left {
@@ -863,7 +863,7 @@ a {
   }
 
   .slide-card {
-    padding-bottom: 3rem;
+    padding-bottom: 0.9rem;
   }
 
   .widgets-crop {
