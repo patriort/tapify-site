@@ -312,6 +312,20 @@ a {
   object-fit: contain;
 }
 
+.slide-visual.crop-top-half {
+  height: min(56vh, 430px);
+  padding-top: 0;
+  align-items: stretch;
+}
+
+.slide-visual.crop-top-half img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .slide-copy {
   display: flex;
   flex-direction: column;
@@ -470,6 +484,25 @@ a {
 .step-four-visual img {
   width: 100%;
   display: block;
+}
+
+.step-four-visual-pair {
+  width: min(680px, 100%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.step-four-visual-pair img {
+  border-radius: 22px;
+}
+
+.step-four-visual-pair img:only-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(320px, 92vw);
 }
 
 .step-four-copy {
@@ -768,6 +801,19 @@ a {
   .step-four-card {
     max-width: 680px;
   }
+
+  .step-four-visual-pair {
+    width: min(620px, 100%);
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .step-four-visual-pair {
+    grid-template-columns: 1fr;
+    width: min(320px, 92vw);
+    gap: 0.8rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -850,6 +896,14 @@ a {
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+
+  .slide-visual.crop-top-half img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: top center;
   }
 
   /* If device is extremely narrow, reduce corner radius and inner padding to gain space */

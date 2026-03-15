@@ -6,26 +6,20 @@ const slides = [
     eyebrow: 'Paso 1',
     title: 'Anotá en 3 segundos',
     description:
-      'Escribí el gasto de forma rápida: "STM" y  "570". Tapify completa y guarda al instante.',
-    image: '/assets/IMG_0301-portrait.png',
-    alt: 'Registro rápido en Tapify'
+      'Escribí el gasto de forma rápida: "STM" y  "600". Tapify completa y guarda al instante.',
+    image: '/assets/paso1.png',
+    alt: 'Registro rápido en Tapify',
+    cropTopHalf: true
   },
   {
     eyebrow: 'Paso 2',
-    title: 'Visualizá tus fijos de forma clara',
+    title: 'Visualizá tu gasto de forma clara',
     description:
-      'Cada gasto fijo queda ordenado por registrado por fecha para que no tengas que buscar ni pensar de más.',
-    image: '/assets/IMG_0302-portrait.png',
-    alt: 'Lista de fijos en Tapify'
+      'Tapify se encarga automáticamente de asignar el ícono y la categoria.',
+    image: '/assets/paso2.png',
+    alt: 'Lista de recientes en Tapify',
+    cropTopHalf: true
   },
-  {
-    eyebrow: 'Paso 3',
-    title: 'Decidí mejor rápido',
-    description:
-      'Mirá el calendario y elegí que día o mes queres visualizar. Sin planillas, sin menús largos.',
-    image: '/assets/IMG_0303-portrait.png',
-    alt: 'Resumen de gastos en Tapify'
-  }
 ]
 
 export default function Home() {
@@ -198,7 +192,7 @@ export default function Home() {
               </div>
               <div>
                 <strong>Vista clara</strong>
-                <span>de tus gastos</span>
+                <span>de tus registros</span>
               </div>
             </div>
           </div>
@@ -248,7 +242,7 @@ export default function Home() {
               aria-live="polite"
               key={slides[activeSlide].title}
             >
-              <div className="slide-visual">
+              <div className={slides[activeSlide].cropTopHalf ? 'slide-visual crop-top-half' : 'slide-visual'}>
                 <img src={slides[activeSlide].image} alt={slides[activeSlide].alt} loading="eager" />
               </div>
               <div className="slide-copy">
@@ -291,6 +285,17 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section wallet reveal-up" id="wallet" data-reveal>
+          <div className="wallet-card" style={{marginTop:15}}>
+              <div className="wallet-row">
+              <img src="/assets/Wallet_App_icon_iOS_12.png" alt="Wallet icon" className="wallet-icon" />
+              <div className="wallet-text">
+                <strong>Integración con Wallet</strong>
+                <p className="muted">Tapify se conecta con Wallet para que cualquier compra que realices se guarde automáticamente en la app.</p>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="section reveal-up" id="beneficios" data-reveal>
           <div className="section-head">
             <h2>Diseñada para el día a día</h2>
@@ -314,26 +319,30 @@ export default function Home() {
           
         </section>
 
+
         <section className="section reveal-up step-four" data-reveal>
           <div className="section-head">
-            <h2>Estadísticas y tendencias</h2>
+            <h2>Fijos</h2>
+            <p>Guardá tus ingresos y gastos recurrentes.</p>
+          </div>
+          <article className="step-four-card">
+            <div className="step-four-visual step-four-visual-pair">
+              <img src="/assets/fijos.png" alt="Fijos de Tapify" />
+            </div>
+          </article>
+          <p></p>
+          <div className="section-head">
+            <h2>Calendario y estadísticas</h2>
             <p>Un bloque separado para visualizar gráficas y reportes semanales.</p>
           </div>
 
           <article className="step-four-card">
-            <div className="step-four-visual">
+            <div className="step-four-visual step-four-visual-pair">
+              <img src="/assets/IMG_0303-portrait.png" alt="Tendencias de Tapify" />
               <img src="/assets/IMG_0304-portrait.png" alt="Estadísticas de Tapify" />
             </div>
           </article>
-                  <div className="wallet-card" style={{marginTop:15}}>
-            <div className="wallet-row">
-              <img src="/assets/Wallet_App_icon_iOS_12.png" alt="Wallet icon" className="wallet-icon" />
-              <div className="wallet-text">
-                <strong>Integración con Wallet</strong>
-                <p className="muted">Tapify se conecta con Wallet para que cualquier compra que realices se guarde automáticamente en la app.</p>
-              </div>
-            </div>
-          </div>
+          
         </section>
 
         <section id="dispositivos" className="section sync-section reveal-up" data-reveal>
@@ -397,4 +406,3 @@ export default function Home() {
     </div>
   )
 }
-
