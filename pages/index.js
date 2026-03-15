@@ -331,7 +331,7 @@ export default function Home() {
               <img src="/assets/Wallet_App_icon_iOS_12.png" alt="Wallet icon" className="wallet-icon" />
               <div className="wallet-text">
                 <strong>Integración con Wallet</strong>
-                <p className="muted" style={{margin:4}}>Tapify se conecta con Wallet para que cualquier compra que realices se guarde automáticamente en la app.</p>
+                <p className="muted">Tapify se conecta con Wallet para que cualquier compra que realices se guarde automáticamente en la app.</p>
               </div>
             </div>
           </div>
