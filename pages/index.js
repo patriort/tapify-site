@@ -176,8 +176,7 @@ export default function Home() {
           <a href="#como-funciona">Producto</a>
           <a href="#beneficios">Ventajas</a>
           <a href="#dispositivos">Dispositivos</a>
-          <a href="#planes">Planes</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#contact">Contacto</a>
         </nav>
       </header>
 
@@ -363,6 +362,34 @@ export default function Home() {
 
       </main>
 
+        {/* Contact section (email + Instagram) */}
+        <section id="contact" className="section reveal-up" data-reveal>
+          <div className="section-head">
+            <h2>Contacto</h2>
+          </div>
+
+          <div className="contact-grid" style={{marginTop:12}}>
+            <div className="contact-links" style={{display:'flex',gap:16,alignItems:'center'}}>
+              <a href="mailto:apptapify@gmail.com" className="contact-link" aria-label="Enviar correo" style={{display:'inline-flex',alignItems:'center',gap:8,color:'inherit',textDecoration:'none'}}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M3 5.5C3 4.67157 3.67157 4 4.5 4H19.5C20.3284 4 21 4.67157 21 5.5V18.5C21 19.3284 20.3284 20 19.5 20H4.5C3.67157 20 3 19.3284 3 18.5V5.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3.5 6.5L12 12.2L20.5 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span>apptapify@gmail.com</span>
+              </a>
+
+              <a id="instagram-link" href="https://www.instagram.com/tapifyapp_" className="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{display:'inline-flex',alignItems:'center',gap:8,color:'inherit',textDecoration:'none'}}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M8 11.5C8 9.567 9.567 8 11.5 8C13.433 8 15 9.567 15 11.5C15 13.433 13.433 15 11.5 15C9.567 15 8 13.433 8 11.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M17.5 6.5L17.5 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span>tapifyapp_</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
       <footer className="site-footer">
         <strong>Tapify</strong>
         <span>Tu dinero en orden, sin complicarte.</span>
@@ -370,3 +397,4 @@ export default function Home() {
     </div>
   )
 }
+
