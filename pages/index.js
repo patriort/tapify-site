@@ -170,13 +170,25 @@ export default function Home() {
           <a href="#como-funciona">Producto</a>
           <a href="#beneficios">Ventajas</a>
           <a href="#dispositivos">Dispositivos</a>
+          <a href="#legal">Soporte y privacidad</a>
           <a href="#contact">Contacto</a>
         </nav>
       </header>
 
       <main className="page-content" id="inicio">
         <section className="hero reveal-up is-visible" data-reveal>
-          <p className="launch-note">Próximamente en App Store</p>
+          <a
+            className="launch-note launch-store-link"
+            href="https://apps.apple.com/uy/app/tapify-app/id6759608729?l=es-MX"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Tapify App en App Store"
+          >
+            <img
+              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-mx?size=250x83"
+              alt="Descargar en el App Store"
+            />
+          </a>
           <div className="hero-copy">
             <h1>Minimalista por fuera. Potente por dentro.</h1>
             <p>Anotá gastos en segundos y entendé tu semana sin menús largos ni pantallas de sobra.</p>
@@ -369,6 +381,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="legal" className="section reveal-up legal-section" data-reveal>
+          <div className="section-head">
+            <h2>Soporte y privacidad</h2>
+            <p>Todo disponible dentro de Tapify, en páginas dedicadas.</p>
+          </div>
+
+          <div className="legal-grid" style={{marginTop: 12}}>
+            <article className="legal-card">
+              <h3>Centro de soporte</h3>
+              <p>Preguntas frecuentes, reportes de errores y contacto de ayuda.</p>
+              <a className="legal-link" href="/soporte">Ver soporte</a>
+            </article>
+
+            <article className="legal-card">
+              <h3>Política de privacidad</h3>
+              <p>Cómo maneja Tapify tus datos y qué información no recopila.</p>
+              <a className="legal-link" href="/privacidad">Leer política</a>
+            </article>
+          </div>
+        </section>
+
       </main>
 
         {/* Contact section (email + Instagram) */}
@@ -401,6 +434,10 @@ export default function Home() {
 
       <footer className="site-footer">
         <strong>Tapify</strong>
+        <div className="footer-links">
+          <a href="/soporte">Soporte</a>
+          <a href="/privacidad">Privacidad</a>
+        </div>
         <span>Tu dinero en orden, sin complicarte.</span>
       </footer>
     </div>
